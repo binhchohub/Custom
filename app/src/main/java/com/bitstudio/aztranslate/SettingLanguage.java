@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.firebase.database.ChildEventListener;
@@ -27,7 +26,6 @@ import java.util.Comparator;
 
 public class SettingLanguage extends AppCompatActivity {
     public ListView listview;
-    public Button button;
     ArrayList<Languages> languageList;
 
     @Override
@@ -35,32 +33,32 @@ public class SettingLanguage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_language);
         listview = (ListView)findViewById(R.id.list);
-        button = (Button)findViewById(R.id.button);
-        listview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        listview.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
-        Languages L1 = new Languages("Afrikaans", "afr.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/afr.traineddata");
-        Languages L2 = new Languages("Belorussian", "bel.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/bel.traineddata");
-        Languages L3 = new Languages("Chinese" , "chi_tra.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/chi_tra.traineddata");
-        Languages L4 = new Languages("Danish" , "dan.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/dan.traineddata");
-        Languages L5 = new Languages("English" , "eng.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/eng.traineddata");
-        Languages L6 = new Languages("French" , "fra.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/fra.traineddata");
-        Languages L7 = new Languages("Greek",  "grc.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/grc.traineddata");
-        Languages L8 = new Languages("Hindi", "hin.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/hin.traineddata");
-        Languages L9 = new Languages("Italian", "ita.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/ita.traineddata");
-        Languages L10 = new Languages("Laotian"	, "lao.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/lao.traineddata");
-        Languages L11 = new Languages("Malay" ,"mal.traineddata" ,"https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/mal.traineddata");
-        Languages L12 = new Languages("Portuguese" ,"por.traineddata" ,"https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/por.traineddata");
-        Languages L13 = new Languages("Russian" ,"rus.traineddata" ,"https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/rus.traineddata");
-        Languages L14 = new Languages("Spanish" ,"spa.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/spa.traineddata");
-        Languages L15 = new Languages("Vietnamese" ,"vie.traineddata" ,"https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/vie.traineddata");
-        Languages L16 = new Languages("Japanese", "jpn.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/jpn.traineddata");
+
+        Languages L1 = new Languages(R.drawable.afrikaans, "Afrikaans", "afr.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/afr.traineddata", "af");
+        Languages L2 = new Languages(R.drawable.belorussian,"Belorussian", "bel.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/bel.traineddata", "be");
+        Languages L3 = new Languages(R.drawable.chinese,"Chinese" , "chi_tra.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/chi_tra.traineddata","zh");
+        Languages L4 = new Languages(R.drawable.danish, "Danish" , "dan.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/dan.traineddata", "da");
+        Languages L5 = new Languages(R.drawable.english, "English" , "eng.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/eng.traineddata", "en");
+        Languages L6 = new Languages(R.drawable.french,"French" , "fra.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/fra.traineddata","fr");
+        Languages L7 = new Languages(R.drawable.greek,"Greek",  "grc.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/grc.traineddata","el");
+        Languages L8 = new Languages(R.drawable.hindi,"Hindi", "hin.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/hin.traineddata","hi");
+        Languages L9 = new Languages(R.drawable.italian,"Italian", "ita.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/ita.traineddata","it");
+        Languages L10 = new Languages(R.drawable.laotian,"Laotian"	, "lao.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/lao.traineddata","lo");
+        Languages L11 = new Languages(R.drawable.malay,"Malay" ,"mal.traineddata" ,"https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/mal.traineddata","ms");
+        Languages L12 = new Languages(R.drawable.portuguese,"Portuguese" ,"por.traineddata" ,"https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/por.traineddata","pt");
+        Languages L13 = new Languages(R.drawable.russian,"Russian" ,"rus.traineddata" ,"https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/rus.traineddata","ru");
+        Languages L14 = new Languages(R.drawable.spanish,"Spanish" ,"spa.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/spa.traineddata","es");
+        Languages L15 = new Languages(R.drawable.vietnamese,"Vietnamese" ,"vie.traineddata" ,"https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/vie.traineddata","vi");
+        Languages L16 = new Languages(R.drawable.japanese,"Japanese", "jpn.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/jpn.traineddata","ja");
 
 
 
 
         final DatabaseReference mData;
         mData = FirebaseDatabase.getInstance().getReference();
- /*
+/*
         mData.child("Languages").push().setValue(L1);
         mData.child("Languages").push().setValue(L2);
         mData.child("Languages").push().setValue(L3);
@@ -80,9 +78,10 @@ public class SettingLanguage extends AppCompatActivity {
 
 */
 
+
         languageList = new ArrayList<Languages>();
-        final ArrayAdapter<Languages> arrayAdapter = new ArrayAdapter<Languages>(this, android.R.layout.simple_list_item_multiple_choice , languageList);
-        listview.setAdapter(arrayAdapter);
+        CustomAdapter customAdaper = new CustomAdapter(this,R.layout.row_listview,languageList);
+        listview.setAdapter(customAdaper);
 
 
 
@@ -106,7 +105,7 @@ public class SettingLanguage extends AppCompatActivity {
                     listview.setItemChecked(i,false);
                 }
 
-                arrayAdapter.notifyDataSetChanged();
+                customAdaper.notifyDataSetChanged();
             }
 
             @Override
@@ -134,7 +133,7 @@ public class SettingLanguage extends AppCompatActivity {
                     listview.setItemChecked(i,false);
                 }
 
-                arrayAdapter.notifyDataSetChanged();
+                customAdaper.notifyDataSetChanged();
 
                 //AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 //builder.setMessage(languageList.get(0).getKey()).show();
@@ -156,50 +155,6 @@ public class SettingLanguage extends AppCompatActivity {
             }
         });
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DialogInterface.OnClickListener dialogOnClickListener = new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        switch (i){
-                            case DialogInterface.BUTTON_POSITIVE:
-                                //Yes button clicked
-                                File direct = new File(Environment.getExternalStorageDirectory()
-                                        + "tessdata");
 
-                                if (!direct.exists()) {
-                                    direct.mkdirs();
-                                }
-
-                                SparseBooleanArray sp = listview.getCheckedItemPositions();
-
-                                for(int j=0;j<sp.size();j++){
-                                    if(sp.valueAt(j)==true){
-                                        Languages lang = (Languages) listview.getItemAtPosition(j);
-                                        DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                                        Uri uri = Uri.parse(lang.getFileurl());
-                                        DownloadManager.Request request = new DownloadManager.Request(uri);
-                                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                                        request.setDestinationInExternalPublicDir("tessdata", lang.getFilename());
-                                        downloadManager.enqueue(request);
-                                    }
-                                }
-                                break;
-
-                            case DialogInterface.BUTTON_NEGATIVE:
-                                //No button clicked
-
-                                break;
-                        }
-                    }
-                };
-
-                SparseBooleanArray sp = listview.getCheckedItemPositions();
-                AlertDialog.Builder builder = new AlertDialog.Builder(SettingLanguage.this);
-                builder.setMessage("Xác nhận tải?").setPositiveButton("Tải xuống", dialogOnClickListener)
-                        .setNegativeButton("Hủy", dialogOnClickListener).show();
-            }
-        });
     }
 }
