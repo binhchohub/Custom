@@ -27,6 +27,7 @@ import java.util.Comparator;
 public class SettingLanguage extends AppCompatActivity {
     public ListView listview;
     ArrayList<Languages> languageList;
+    public static  ArrayList<Languages> languagesListAll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,24 +35,25 @@ public class SettingLanguage extends AppCompatActivity {
         setContentView(R.layout.activity_setting_language);
         listview = (ListView)findViewById(R.id.list);
         listview.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        languagesListAll = new ArrayList<Languages>();
 
 
-        Languages L1 = new Languages(R.drawable.afrikaans, "Afrikaans", "afr.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/afr.traineddata", "af");
-        Languages L2 = new Languages(R.drawable.belorussian,"Belorussian", "bel.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/bel.traineddata", "be");
-        Languages L3 = new Languages(R.drawable.chinese,"Chinese" , "chi_tra.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/chi_tra.traineddata","zh");
-        Languages L4 = new Languages(R.drawable.danish, "Danish" , "dan.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/dan.traineddata", "da");
-        Languages L5 = new Languages(R.drawable.english, "English" , "eng.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/eng.traineddata", "en");
-        Languages L6 = new Languages(R.drawable.french,"French" , "fra.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/fra.traineddata","fr");
-        Languages L7 = new Languages(R.drawable.greek,"Greek",  "grc.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/grc.traineddata","el");
-        Languages L8 = new Languages(R.drawable.hindi,"Hindi", "hin.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/hin.traineddata","hi");
-        Languages L9 = new Languages(R.drawable.italian,"Italian", "ita.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/ita.traineddata","it");
-        Languages L10 = new Languages(R.drawable.laotian,"Laotian"	, "lao.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/lao.traineddata","lo");
-        Languages L11 = new Languages(R.drawable.malay,"Malay" ,"mal.traineddata" ,"https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/mal.traineddata","ms");
-        Languages L12 = new Languages(R.drawable.portuguese,"Portuguese" ,"por.traineddata" ,"https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/por.traineddata","pt");
-        Languages L13 = new Languages(R.drawable.russian,"Russian" ,"rus.traineddata" ,"https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/rus.traineddata","ru");
-        Languages L14 = new Languages(R.drawable.spanish,"Spanish" ,"spa.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/spa.traineddata","es");
-        Languages L15 = new Languages(R.drawable.vietnamese,"Vietnamese" ,"vie.traineddata" ,"https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/vie.traineddata","vi");
-        Languages L16 = new Languages(R.drawable.japanese,"Japanese", "jpn.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/jpn.traineddata","ja");
+        Languages L1 = new Languages( "Afrikaans", "afr.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/afr.traineddata", "af");
+        Languages L2 = new Languages("Belorussian", "bel.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/bel.traineddata", "be");
+        Languages L3 = new Languages("Chinese" , "chi_tra.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/chi_tra.traineddata","zh");
+        Languages L4 = new Languages("Danish" , "dan.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/dan.traineddata", "da");
+        Languages L5 = new Languages("English" , "eng.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/eng.traineddata", "en");
+        Languages L6 = new Languages("French" , "fra.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/fra.traineddata","fr");
+        Languages L7 = new Languages("Greek",  "grc.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/grc.traineddata","el");
+        Languages L8 = new Languages("Hindi", "hin.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/hin.traineddata","hi");
+        Languages L9 = new Languages("Italian", "ita.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/ita.traineddata","it");
+        Languages L10 = new Languages("Laotian"	, "lao.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/lao.traineddata","lo");
+        Languages L11 = new Languages("Malay" ,"mal.traineddata" ,"https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/mal.traineddata","ms");
+        Languages L12 = new Languages("Portuguese" ,"por.traineddata" ,"https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/por.traineddata","pt");
+        Languages L13 = new Languages("Russian" ,"rus.traineddata" ,"https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/rus.traineddata","ru");
+        Languages L14 = new Languages("Spanish" ,"spa.traineddata" , "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/spa.traineddata","es");
+        Languages L15 = new Languages("Vietnamese" ,"vie.traineddata" ,"https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/vie.traineddata","vi");
+        Languages L16 = new Languages("Japanese", "jpn.traineddata", "https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/jpn.traineddata","ja");
 
 
 
@@ -92,7 +94,7 @@ public class SettingLanguage extends AppCompatActivity {
                 Languages languages = dataSnapshot.getValue(Languages.class);
                 languages.setKey(dataSnapshot.getKey());
                 languageList.add(languages);
-
+                languagesListAll.add(languages);
 
                 Collections.sort(languageList, new Comparator<Languages>() {
                     @Override
@@ -100,10 +102,14 @@ public class SettingLanguage extends AppCompatActivity {
                         return l1.getName().compareToIgnoreCase(l2.getName());
                     }
                 });
+                Collections.sort(languagesListAll, new Comparator<Languages>() {
+                    @Override
+                    public int compare(Languages l1, Languages l2) {
+                        return l1.getName().compareToIgnoreCase(l2.getName());
+                    }
+                });
 
-                for(int i=0; i<languageList.size(); i++){
-                    listview.setItemChecked(i,false);
-                }
+
 
                 customAdaper.notifyDataSetChanged();
             }
@@ -116,6 +122,7 @@ public class SettingLanguage extends AppCompatActivity {
                     if(lang.getKey().equals(dataSnapshot.getKey())){
                         int ind = languageList.indexOf(lang);
                         languageList.set(ind, lanNew);
+                        languagesListAll.set(ind, lanNew);
                         lanNew.setKey(dataSnapshot.getKey());
                     }
 
@@ -128,10 +135,14 @@ public class SettingLanguage extends AppCompatActivity {
                         return l1.getName().compareToIgnoreCase(l2.getName());
                     }
                 });
+                Collections.sort(languagesListAll, new Comparator<Languages>() {
+                    @Override
+                    public int compare(Languages l1, Languages l2) {
+                        return l1.getName().compareToIgnoreCase(l2.getName());
+                    }
+                });
 
-                for(int i=0; i<languageList.size(); i++){
-                    listview.setItemChecked(i,false);
-                }
+
 
                 customAdaper.notifyDataSetChanged();
 

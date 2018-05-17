@@ -3,7 +3,6 @@ package com.bitstudio.aztranslate;
 public class Languages {
 
 
-    private int scr;
     private String name;
     private String filename;
     private String fileurl;
@@ -14,8 +13,8 @@ public class Languages {
 
     }
 
-    public Languages(int scr, String name, String filename, String fileurl, String symbolName) {
-        this.scr = scr;
+    public Languages(String name, String filename, String fileurl, String symbolName) {
+
         this.name = name;
         this.filename = filename;
         this.fileurl = fileurl;
@@ -29,15 +28,6 @@ public class Languages {
 
     public void setSymbolName(String symbolName) {
         this.symbolName = symbolName;
-    }
-
-
-    public int getScr() {
-        return scr;
-    }
-
-    public void setScr(int scr) {
-        this.scr = scr;
     }
 
     public String getKey() {
